@@ -7,13 +7,14 @@ body{
     background-image: url('/images/bg.png');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 150vh;
 }
 .container{
     position: absolute;
     top: 0;
     right: 0;
     background-color: #E5F9DB;
-    height: 100vh;
+    height: 150vh;
     width: 50%;
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
@@ -28,6 +29,12 @@ body{
     width: 90px;
     margin-right: 10px;
 }
+.container h1{
+    font-size: 55px;
+    color: #97A97C;
+    margin-left: 10%;
+    line-height: 90px;
+}
 .container p{
     font-weight: bold;
     text-transform: uppercase;
@@ -36,29 +43,35 @@ body{
     margin-top: 20px;
     color: #718355;
 }
-.container h1{
-    font-size: 96px;
-    color: #97A97C;
-    margin-right: 20%;
-    margin-left: 40%;
-    line-height: 90px;
-    text-align: end;
-}
 .container input{
     border-radius: 20px;
     background-color: #718355;
     padding: 20px;
     width: 50%;
     display: block;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 25%;
     border: none;
 }
-#username::placeholder , #password::placeholder {
+#fullname::placeholder , 
+#address::placeholder,
+#phonenumber::placeholder,
+#gender::placeholder,
+#email::placeholder,
+#uploadimage::placeholder,
+#username::placeholder,
+#password::placeholder {
     color: #E5F9DB;
 }
-#username, #password{
+#fullname, 
+#password,
+#phonenumber,
+#gender,
+#email,
+#uploadimage,
+#username,
+#password{
     color: #E5F9DB;
 }
 .container button{
@@ -80,19 +93,19 @@ body{
     color: #718355;
     background-color: #97A97C;
 }
-.container .down-container{
+.container .lower-part{
     margin-left: 37%;
     margin-top: 20px;
 }
-.container .down-container p{
+.container .lower-part p{
     font-size: 15px;
     text-transform: capitalize;
 }
-.container .down-container a{
+.container .lower-part a{
     text-decoration: none;
     color: #4A4A4A;
     transition: .5s;
 }
-.container .down-container a:hover{
+.container .lower-part a:hover{
     color: #718355;
 }

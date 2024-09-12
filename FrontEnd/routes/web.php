@@ -21,5 +21,6 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/homepage',[MainController::class, 'homepage'])->name('Mainfolder.homepage');
-Route::get('/homepage/login',[MainController::class, 'login'])->name('Mainfolder.login');
+Route::get('/appointify',[MainController::class, 'homepage'])->name('Mainfolder.homepage');
+Route::get('/appointify/login',[MainController::class, 'login'])->name('Mainfolder.login');
+Route::get('/appointify/signup',[MainController::class, 'signup'])->name('Mainfolder.signup');

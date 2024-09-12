@@ -20,7 +20,7 @@
             <button>Login</button>
         </form>
         <div class="down-container">
-            <p>Don't have an account?<a href="#"> Sign Up</a></p>
+            <p>Don't have an account?<a href="{{ route('Mainfolder.signup')}}"> Sign Up</a></p>
         </div>
     </div>
 </body>

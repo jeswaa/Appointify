@@ -13,4 +13,7 @@ class MainController extends Controller
     public function login(){
         return view('Mainfolder.login');
     }
+    public function signup(){
+        return view('Mainfolder.signup');
+    }
 }
