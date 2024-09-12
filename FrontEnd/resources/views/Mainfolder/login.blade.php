@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="logo"><img src="{{ asset('/images/logo.png')}}" alt=""><p>Appointify</p></div>
+        <div class="logo"><img src="{{ asset('/images/logo.png')}}" alt=""><a href="{{route('Mainfolder.homepage')}}"><p>Appointify</p></a></div>
         <h1>Hello There!</h1>
 
         <form action="#" method="post">

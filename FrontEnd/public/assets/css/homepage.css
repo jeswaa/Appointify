@@ -135,6 +135,10 @@ button{
     border: none;
     margin-top: 50px;
     width: 30%;
+    transition: .5s;
+}
+button:hover{
+    background-color: #97A97C;
 }
 button a{
     text-decoration: none;
@@ -142,4 +146,8 @@ button a{
     font-family: "Poppins";
     color: #4A4A4A;
     font-size: 30px;
+    transition: .5s;
+}
+button a:hover{
+    color: #718355;
 }

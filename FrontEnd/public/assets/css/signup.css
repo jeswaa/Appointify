@@ -4,7 +4,7 @@
     font-family: 'Poppins';
 }
 body{
-    background-image: url('/images/bg.png');
+    background-image: url('/images/bg-signup.png');
     background-repeat: no-repeat;
     background-size: cover;
     height: 150vh;
@@ -12,22 +12,22 @@ body{
 .container{
     position: absolute;
     top: 0;
-    right: 0;
+    left: 0;
     background-color: #E5F9DB;
     height: 150vh;
     width: 50%;
-    border-top-left-radius: 100px;
-    border-bottom-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
 }
 .container .logo{
     margin-top: 2%;
-    margin-left: 6%;
+    margin-left: 60%;
     display: flex;
 }
 .container .logo img{
     height: 90px;
     width: 90px;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 .container h1{
     font-size: 55px;
@@ -51,7 +51,7 @@ body{
     display: block;
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-left: 25%;
+    margin-left: 10%;
     border: none;
 }
 #fullname::placeholder , 
@@ -79,7 +79,7 @@ body{
     padding: 10px;
     width: 56%;
     margin-top: 30px;
-    margin-left: 25%;
+    margin-left: 10%;
     background-color: #718355;
     color: #E5F9DB;
     font-size: 32px;
@@ -94,7 +94,7 @@ body{
     background-color: #97A97C;
 }
 .container .lower-part{
-    margin-left: 37%;
+    margin-left: 23%;
     margin-top: 20px;
 }
 .container .lower-part p{

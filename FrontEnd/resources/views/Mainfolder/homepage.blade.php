@@ -21,7 +21,7 @@
             <a href="{{route('Mainfolder.login')}}">Login</a>
         </div>
         <div class="signin-tab">
-            <a href="">Sign Up</a>
+            <a href="{{route('Mainfolder.signup')}}">Sign Up</a>
         </div>
     </div>
 
@@ -35,6 +35,6 @@
         <img src="#" alt="Image here">
     </div>
 
-    <button><a href="">GET STARTED NOW</a></button>
+    <button><a href="{{route('Mainfolder.login')}}">GET STARTED NOW</a></button>
 </body>
 </html>
