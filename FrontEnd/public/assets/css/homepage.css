@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 body {
     background-color: #E5F9DB;
@@ -19,8 +20,10 @@ body {
 }
 
 .top-section img {
-    width: 50px;
-    height: 50px;
+    width: 150px;
+    height: 150px;
+    margin-top: 50px;
+    margin-left: 20px;
 }
 .nav-links {
     display: flex;
@@ -123,9 +126,9 @@ body {
 .big-pic img{
     position: absolute;
     top: 20%;
-    right: 5%;
-    height: 500px;
-    width: 800px;
+    right: 0%;
+    height: 600px;
+    width: 850px;
 }
 button{
     margin-left: 100px;
@@ -136,6 +139,7 @@ button{
     margin-top: 50px;
     width: 30%;
     transition: .5s;
+    cursor: pointer;
 }
 button:hover{
     background-color: #97A97C;
@@ -151,3 +155,94 @@ button a{
 button a:hover{
     color: #718355;
 }
+
+/* Middle Part */
+.middle-section {
+    margin-top: 10%;
+    text-align: center;
+    background-color: #B5C99A;
+    padding: 20px;
+    border-top-left-radius: 150px;
+    border-top-right-radius: 150px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.col-1 {
+    margin-bottom: 30px;
+}
+.col-1 h1{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-size: 40px;
+    font-family: 'Poppins';
+    color: #E5F9DB;
+}
+.col-1 span{
+    color: #718355;
+}
+
+.card-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch; 
+    flex-wrap: wrap;
+    gap: 70px;
+}
+
+.card {
+    flex: 1;
+    max-width: 250px;
+    text-align: center;
+    padding: 20px;
+    transition: .5s;
+    border-radius: 20px;
+}
+
+.card img {
+    width: 200px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.card h1 {
+    font-size: 24px;
+    color: #718355;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 14px;
+}
+.card:hover{
+    background-color: #E5F9DB;
+    border-radius: 20px;
+}
+
+/* Last Section */
+
+.middle-section .feedback-col{
+    text-align: center;
+    color: #4A4A4A;
+    font-size: 50px;
+    padding-top: 20%;
+    padding-bottom: 30%;
+}
+
+/* Footer */
+footer{
+    background-color: #97A97C;
+    padding: 30px;
+    font-family: 'Poppins';
+    display: flex;
+}
+.left-col p{
+    color: white;
+}
+.social-media{
+    margin-left: 70%;
+} 
