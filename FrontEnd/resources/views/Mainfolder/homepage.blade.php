@@ -70,7 +70,7 @@
             </div>
             <section id="section-3">
                 <div class="feedback-col">
-                        <h1>FOR EDIT PA ANG FEEDBACK SECTION</h1>
+                        <h1>404 NOT FOUND</h1>
                 </div>
             </section>
         </div>
