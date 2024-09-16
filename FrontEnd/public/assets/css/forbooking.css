@@ -1,7 +1,163 @@
 *{
     margin: 0;
     padding: 0;
+    font-family: 'Poppins';
 }
 body{
     background-color: #E5F9DB;
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+    margin-left: 30px;
+  }
+.header-container h1{
+    font-size: 60px;
+    color: #718355;
+    margin-left: 20px;
+}
+.header-container a{
+    font-size: 50px;
+    color: #718355;
+    margin-left: 30px;
+    transition: .5s ease;
+}
+.header-container a:hover{
+    color: #B5C99A;
+}
+
+.first-col{
+    margin-top: 30px;
+    margin-left: 60px;
+}
+.first-col h1{
+    color: #718355;
+    margin-bottom: 20px;
+}
+.first-col input{
+    display: block;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #718355;
+    width: 30%;
+}
+#fullname::placeholder,
+#address::placeholder,
+#phonenumber::placeholder,
+#email::placeholder{
+    color: #E5F9DB;
+    font-size: 15px;
+}
+#fullname,
+#address,
+#phonenumber,
+#email,
+#options{
+    color: #E5F9DB;
+    font-size: 15px;
+}
+.second-col{
+    margin-top: 30px;
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+}
+.second-col h1{
+    color: #718355;
+}
+.second-col label{
+    color: #718355;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.second-col .another-part-date label{
+    display: block;
+    margin-top: 12%;
+}
+.second-col .another-part-reason label{
+    display: block;
+    margin-top: 2%;
+}
+.second-col select{
+    background-color: #718355;
+    width: 30%;
+    padding: 15px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    appearance: none;
+    
+}
+.second-col select option {
+    padding: 8px;
+    background-color: #718355;
+    color: #E5F9DB;
+}
+
+.second-col select option:hover {
+    background-color: #f0f0f0;
+}
+#options option[disabled] {
+    color: #718355; /* Change to a lighter color for placeholder */
+}
+.second-col input{
+    background-color: #718355;
+    width: 30%;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+}
+.second-col input[type="date"],
+input[type="text"]{
+    color: #E5F9DB;
+}
+.third-col{
+    position: absolute;
+    top: 21%;
+    right: 25%;
+}
+.third-col h1{
+    color: #718355;
+}
+.third-col select{
+    margin-top: 20px;
+    background-color: #718355;
+    width: 240%;
+    padding: 20px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: none;
+    appearance: none;
+}
+.fourth-col{
+    position: absolute;
+    top: 60%;
+    right: 21%;
+}
+.fourth-col h1{
+    color: #718355;
+}
+.fourth-col input[type="radio"] {
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+.fourth-col .options label{
+    background-color: transparent;
+    padding: 0;
+}
+button{
+    background-color: #718355;
+    padding: 10px;
+    width: 20%;
+    border: none;
+    border-radius: 20px;
+    color: #E5F9DB;
+    font-size: 25px;
+    font-weight: bold;
+    margin-left: 40%;
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
