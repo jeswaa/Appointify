@@ -29,20 +29,29 @@ body{
 
 .first-col{
     margin-top: 30px;
-    margin-left: 60px;
+    margin-left: 7%;
+    background-color: #97A97C;
+    padding: 20px;
+    width: 55%;
+    border-radius: 10px;
 }
 .first-col h1{
-    color: #718355;
-    margin-bottom: 20px;
+    color: #E5F9DB;
+    font-size: 40px;
+    margin-left: 10px;
+}
+.first-col hr{
+    margin-bottom: 10px;
 }
 .first-col input{
+    margin-top: 10px;
     display: block;
     margin-bottom: 20px;
     padding: 20px;
     border-radius: 20px;
     border: none;
     background-color: #718355;
-    width: 30%;
+    width: 95%;
 }
 #fullname::placeholder,
 #address::placeholder,
@@ -59,105 +68,57 @@ body{
     color: #E5F9DB;
     font-size: 15px;
 }
+
 .second-col{
     margin-top: 30px;
-    margin-left: 60px;
-    display: flex;
-    flex-direction: column;
+    margin-bottom: 20px;
+    margin-left: 7%;
+    background-color: #97A97C;
+    padding: 20px;
+    width: 55%;
+    border-radius: 10px;
 }
 .second-col h1{
-    color: #718355;
-}
-.second-col label{
-    color: #718355;
-    font-size: 20px;
-    margin-bottom: 20px;
-    margin-top: 10px;
-}
-.second-col .another-part-date label{
-    display: block;
-    margin-top: 12%;
-}
-.second-col .another-part-reason label{
-    display: block;
-    margin-top: 2%;
-}
-.second-col select{
-    background-color: #718355;
-    width: 30%;
-    padding: 15px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    appearance: none;
-    
-}
-.second-col select option {
-    padding: 8px;
-    background-color: #718355;
     color: #E5F9DB;
+    font-size: 40px;
+    margin-left: 10px;
+}
+.second-col h2{
+    color: #4A4A4A;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 10px;
+}
+.second-col  label{
+    color: #E5F9DB;
+    font-weight: bold;
 }
 
-.second-col select option:hover {
-    background-color: #f0f0f0;
-}
-#options option[disabled] {
-    color: #718355; /* Change to a lighter color for placeholder */
-}
-.second-col input{
-    background-color: #718355;
-    width: 30%;
-    padding: 15px;
-    border-radius: 20px;
-    border: none;
-}
-.second-col input[type="date"],
-input[type="text"]{
-    color: #E5F9DB;
-}
-.third-col{
-    position: absolute;
-    top: 21%;
-    right: 25%;
-}
-.third-col h1{
-    color: #718355;
-}
-.third-col select{
-    margin-top: 20px;
-    background-color: #718355;
-    width: 230%;
-    padding: 20px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border: none;
-    appearance: none;
-}
-.fourth-col{
-    position: absolute;
-    top: 60%;
-    right: 21%;
-}
-.fourth-col h1{
-    color: #718355;
-}
-.fourth-col input[type="radio"] {
-    margin-top: 10px;
-    margin-bottom: 50px;
-}
-.fourth-col .options label{
-    background-color: transparent;
-    padding: 0;
-}
-button{
-    background-color: #718355;
+.second-col .session{
     padding: 10px;
-    width: 20%;
-    border: none;
-    border-radius: 20px;
-    color: #E5F9DB;
-    font-size: 25px;
-    font-weight: bold;
-    margin-left: 40%;
-    margin-top: 20px;
-    margin-bottom: 30px;
+}
+input[type="radio"] {
+    display: none;
+}
+
+/* Style the label to look like a box */
+label.time, label.highlight {
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 4px;
+    margin-left:80px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Hover effect to show box */
+label.time:hover, label.highlight:hover {
+    background-color: #718355;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Change appearance when the radio button is checked */
+input[type="radio"]:checked + label {
+    background-color: #718355;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

@@ -18,76 +18,46 @@
     <form action="#" method="post">
         <div class="first-col">
             <h1>Information</h1>
+            <hr>
             <input type="text" name="fullname" id="fullname" placeholder="Fullname...">
             <input type="text" name="address" id="address" placeholder="Address...">
             <input type="text" name="phonenumber" id="phonenumber" placeholder="Phone Number...">
             <input type="text" name="email" id="email" placeholder="Email...">
         </div>
         <div class="second-col">
-            <h1>Select Slot</h1>
-            <label for="options">Time</label>
-                <select id="options" name="options" placeholder="Choose Time">
-                    <option value="" selected disabled>Select a time</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                </select>
-                <div class="another-part-date">
-                    <label for="date">Date</label>
-                    <input type="date">
+                <h1 class="title">Time</h1>
+                    <hr class="divider">
+                    <div class="session">
+                        <h2 class="session-title">MORNING SESSION</h2>
+                        <div class="session-times">
+                            <input type="radio" id="session1" name="afternoon-session" value="8:00 - 9:00 AM">
+                            <label for="session1" class="time">8:00 - 9:00 AM</label>
+                            
+                            <input type="radio" id="session2" name="afternoon-session" value="9:30 - 10:30 AM">
+                            <label for="session2" class="time">9:30 - 10:30 AM</label>
+                            
+                            <input type="radio" id="session3" name="afternoon-session" value="11:00 - 12:00 AM">
+                            <label for="session3" class="time highlight">11:00 - 12:00 AM</label>
+                        </div>
+                    </div>
+                    <div class="session">
+                        <h2 class="session-title">AFTERNOON SESSION</h2>
+                        <div class="session-times">
+                            <input type="radio" id="session4" name="afternoon-session" value="1:00 - 2:00 PM">
+                            <label for="session4" class="time">1:00 - 2:00 PM</label>
+
+                            <input type="radio" id="session5" name="afternoon-session" value="2:30 - 3:30 PM">
+                            <label for="session5" class="time">2:30 - 3:30 PM</label>
+
+                            <input type="radio" id="session6" name="afternoon-session" value="4:00 - 5:00 PM">
+                            <label for="session6" class="time highlight">4:00 - 5:00 PM</label>
+                        </div>
+                    </div>
                 </div>
-                <div class="another-part-reason">
-                    <label for="reason">Reason of visit</label>
-                    <input type="text">
-                </div>
-                    
-                
         </div>
         <div class="third-col">
-        <h1>Choose Clinic</h1>
-                <select id="options" name="options">
-                <option value="" selected disabled>Choose Clinic</option>
-                    <option value="option1">Option 1</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
-                </select>
+            for editing pa yung booking page. WAG MUNANG GALAWIN
         </div>
-        <div class="fourth-col">
-                    <h1>Payment Method</h1>
-                    <!-- Radio buttons for payment method -->
-                    <input type="radio" id="onsite" name="payment-method" value="onsite" onclick="toggleOnlinePayment(this)">
-                    <label for="onsite">Onsite Payment</label><br>
-
-                    <input type="radio" id="online" name="payment-method" value="online" onclick="toggleOnlinePayment(this)">
-                    <label for="online">Online Payment</label><br>
-
-                    <!-- Dropdown for online payment methods (initially hidden) -->
-                        <div id="online-payment-options" style="display: none; margin-top: 50px; margin-left: 3px; background-color: transparent;">
-                            <label for="online-payment">Choose Payment Method</label>
-                            <select id="online-payment" name="online-payment">
-                                <option value="paypal">PayPal</option>
-                                <option value="gcash">GCash</option>
-                                <option value="visa">Visa</option>
-                            </select>
-                        </div>
-                </div>
-
-                <script>
-                    function toggleOnlinePayment(element) {
-                        var onlinePaymentDiv = document.getElementById("online-payment-options");
-                        if (element.value === "online") {
-                            onlinePaymentDiv.style.display = "block";
-                        } else {
-                            onlinePaymentDiv.style.display = "none";
-                        }
-                    }
-                </script>
-
-
-
-        <button>Book Now</button>
-
     </form>
 </body>
 </html>
