@@ -56,8 +56,24 @@
                 </div>
         </div>
         <div class="third-col">
-            for editing pa yung booking page. WAG MUNANG GALAWIN
+            <h2>Payment</h2>
+            <p>Choose Payment method below.</p>
+            <div class="title">
+                <h2>Onsite Payment</h2> 
+                <input type="radio" id="onsite" name="onsite">
+                <label for="onsite">Pay Onsite</label>
+            </div>
+            <div class="title">
+                <h2 class="online">Online Payment</h2>
+                <input type="radio" id="paypal" name="paypal">
+                <label for="paypal">PayPal</label>
+
+                <input type="radio" id="G-cash" name="G-cash">
+                <label for="G-cash">G-cash</label>
+            </div>
+            <button>Book</button>
         </div>
+        
     </form>
 </body>
 </html>

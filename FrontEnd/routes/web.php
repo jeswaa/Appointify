@@ -24,4 +24,5 @@ require __DIR__.'/auth.php';
 Route::get('/appointify',[MainController::class, 'homepage'])->name('Mainfolder.homepage');
 Route::get('/appointify/login',[MainController::class, 'login'])->name('Mainfolder.login');
 Route::get('/appointify/signup',[MainController::class, 'signup'])->name('Mainfolder.signup');
+Route::get('/appointify/userhomepage',[MainController::class, 'userHomepage'])->name('Mainfolder.userHomepage');
 Route::get('/appointify/book',[MainController::class, 'book'])->name('Mainfolder.BookingPage');

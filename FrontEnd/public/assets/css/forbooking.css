@@ -122,3 +122,64 @@ input[type="radio"]:checked + label {
     background-color: #718355;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+.third-col{
+    position: absolute;
+    top: 21%;
+    right: 5%;
+    border-radius: 10px;
+    background-color: #97A97C;
+    padding: 20px;
+    height: 760px;
+}
+.third-col h2{
+    color: #E5F9DB;
+    font-size: 50px;
+    margin-left: 10px;
+}
+.third-col p{
+    font-size: 20px;
+    color: #E5F9DB;
+    margin-top: -5px;
+    margin-left: 10px;
+}
+.third-col .title h2{
+    color: #4A4A4A;
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.third-col .title input[type="radio"] {
+    display: none;
+}
+.third-col .title  label{
+    border: 2px solid #718355;
+    padding: 50px;
+    width: 20%;
+    margin-left: 27%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: center;
+    display: flex;
+    
+}
+.third-col .title{
+    margin-bottom: 30px;
+}
+
+.third-col button{
+    padding: 10px;
+    width: 50%;
+    color: #E5F9DB;
+    background-color: #B5C99A;
+    border: 3px solid #718355;
+    border-radius: 10px;
+    margin-left: 27%;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: -10px;
+    cursor: pointer;
+    transition: .5s;
+}
+.third-col button:hover{
+    background-color: transparent;
+}
