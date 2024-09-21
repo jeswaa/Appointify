@@ -61,15 +61,15 @@
             <div class="title">
                 <h2>Onsite Payment</h2> 
                 <input type="radio" id="onsite" name="onsite">
-                <label for="onsite">Pay Onsite</label>
+                <label for="onsite"  class="onsite">Pay Onsite</label>
             </div>
             <div class="title">
                 <h2 class="online">Online Payment</h2>
                 <input type="radio" id="paypal" name="paypal">
-                <label for="paypal">PayPal</label>
+                <label for="paypal" class="ol">PayPal</label>
 
                 <input type="radio" id="G-cash" name="G-cash">
-                <label for="G-cash">G-cash</label>
+                <label for="G-cash" class="ol">G-cash</label>
             </div>
             <button>Book</button>
         </div>

@@ -125,11 +125,11 @@ input[type="radio"]:checked + label {
 .third-col{
     position: absolute;
     top: 21%;
-    right: 5%;
+    right: 8%;
     border-radius: 10px;
     background-color: #97A97C;
     padding: 20px;
-    height: 760px;
+    height: 500px;
 }
 .third-col h2{
     color: #E5F9DB;
@@ -137,7 +137,7 @@ input[type="radio"]:checked + label {
     margin-left: 10px;
 }
 .third-col p{
-    font-size: 20px;
+    font-size: 15px;
     color: #E5F9DB;
     margin-top: -5px;
     margin-left: 10px;
@@ -145,29 +145,34 @@ input[type="radio"]:checked + label {
 .third-col .title h2{
     color: #4A4A4A;
     font-size: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+}
+.third-col .title .ol{
+    margin-bottom: 20px;
+    padding-left: 150px;
+}
+.third-col .title .onsite{
+    padding-left: 150px;
+    margin-bottom: -10px;
 }
 .third-col .title input[type="radio"] {
     display: none;
 }
 .third-col .title  label{
     border: 2px solid #718355;
-    padding: 50px;
+    padding: 20px;
     width: 20%;
-    margin-left: 27%;
+    margin-left: 50px;
     border-radius: 10px;
-    margin-bottom: 30px;
-    text-align: center;
     display: flex;
-    
 }
 .third-col .title{
     margin-bottom: 30px;
 }
-
 .third-col button{
     padding: 10px;
     width: 50%;
+    margin-top: -30px;
     color: #E5F9DB;
     background-color: #B5C99A;
     border: 3px solid #718355;
@@ -176,7 +181,6 @@ input[type="radio"]:checked + label {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 20px;
-    margin-top: -10px;
     cursor: pointer;
     transition: .5s;
 }
