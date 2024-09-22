@@ -1,3 +1,4 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 *{
     margin: 0;
     padding: 0;
@@ -7,6 +8,8 @@ body{
     background-image: url('/images/bg.png');
     background-repeat: no-repeat;
     background-size: cover;
+    overflow: hidden;
+    background-attachment: fixed;
 }
 .container{
     position: absolute;
@@ -17,6 +20,18 @@ body{
     width: 50%;
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
+    animation: slideInRight 2s forwards;
+    transform: translateX(100%);
+}
+@keyframes slideinRight {
+    from {
+        transform: translateX(900%);
+        opacity: 0; 
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 .container .logo{
     margin-top: 2%;

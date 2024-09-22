@@ -1,3 +1,4 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 *{
     margin: 0;
     padding: 0;
@@ -18,6 +19,18 @@ body{
     width: 50%;
     border-top-right-radius: 100px;
     border-bottom-right-radius: 100px;
+    animation: slideInLeft 2s forwards;
+    transform: translateX(-0%);
+}
+@keyframes slideinLeft {
+    from {
+        transform: translateX(-100%); 
+        opacity: 0; 
+    }
+    to {
+        transform: translateX(0); 
+        opacity: 1; 
+    }
 }
 .container .logo{
     margin-top: 2%;
