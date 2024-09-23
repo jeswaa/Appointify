@@ -15,6 +15,7 @@
         <h1>Hello There!</h1>
 
         <form action="#" method="post">
+            @csrf
             <input type="text" name="username" id="username" placeholder="Your username...">
             <input type="text" name="password" id="password" placeholder="Your password...">
             <button>Login</button>

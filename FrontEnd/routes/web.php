@@ -22,7 +22,12 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::get('/appointify',[MainController::class, 'homepage'])->name('Mainfolder.homepage');
+
 Route::get('/appointify/login',[MainController::class, 'login'])->name('Mainfolder.login');
+Route::post('/appointify/login',[MainController::class, 'loginPost'])->name('login.post');
 Route::get('/appointify/signup',[MainController::class, 'signup'])->name('Mainfolder.signup');
+Route::post('/appointify/signup',[MainController::class, 'signupPost'])->name('signup.post');
+Route::get('/appointify/userhomepage/UserProfile', [MainController::class, 'profile'])->name('Mainfolder.profile');
+
 Route::get('/appointify/userhomepage',[MainController::class, 'userHomepage'])->name('Mainfolder.userHomepage');
 Route::get('/appointify/book',[MainController::class, 'book'])->name('Mainfolder.BookingPage');

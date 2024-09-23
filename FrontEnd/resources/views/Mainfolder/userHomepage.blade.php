@@ -19,7 +19,7 @@
             <a href="#section-3">Reviews</a>
         </div>
         <div class="user-prof">
-            <a href="#"><i class="far fa-user-circle"></i></a>
+            <a href="{{route('Mainfolder.profile')}}"><i class="far fa-user-circle"></i></a>
         </div>
     </div>
 

@@ -14,16 +14,16 @@
         <div class="logo"><a href="{{route('Mainfolder.homepage')}}"><p>Appointify</p></a><img src="{{ asset('/images/logo.png')}}" alt=""></div>
         <h1>Create an Account</h1>
 
-        <form action="#" method="post">
+        <form action="{{route('signup.post')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="text" name="fullname" id="fullname" placeholder="Fullname...">
             <input type="text" name="address" id="address" placeholder="Address...">
             <input type="text" name="phonenumber" id="phonenumber" placeholder="Phone Number...">
             <input type="text" name="gender" id="gender" placeholder="Gender...">
             <input type="text" name="email" id="email" placeholder="Email...">
-            <input type="text" name="uploadimage" id="uploadimage" placeholder="Upload Image...">
+            <input type="file" name="uploadimage" id="uploadimage" accept="image/*" placeholder="Upload Image...">
             <input type="text" name="username" id="username" placeholder="Username...">
-            <input type="text" name="password" id="password" placeholder="Password...">
+            <input type="password" name="password" id="password" placeholder="Password...">
             <button>Submit</button>
         </form>
         <div class="lower-part">
