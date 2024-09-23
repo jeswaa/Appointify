@@ -12,7 +12,7 @@
 </head>
 <body>
         <div class="header-container">
-        <a href="#"><i class="fas fa-angle-left"></i></a>
+        <a href="{{route('Mainfolder.userHomepage')}}"><i class="fas fa-angle-left"></i></a>
         <h1>Book Appoinment</h1>
         </div>
     <form action="#" method="post">
