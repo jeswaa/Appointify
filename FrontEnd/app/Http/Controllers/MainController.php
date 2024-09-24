@@ -91,4 +91,9 @@ class MainController extends Controller
     public function book(){
         return view('Mainfolder.BookingPage');
     }
+
+    
+    public function profileEdit(){
+        return view('Mainfolder.editprofile_user');
+   }
 }
