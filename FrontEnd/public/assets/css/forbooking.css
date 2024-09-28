@@ -28,7 +28,7 @@ body{
 }
 
 .first-col{
-    margin-top: 30px;
+    margin-top: 12px;
     margin-left: 7%;
     background-color: #97A97C;
     padding: 20px;
@@ -104,7 +104,7 @@ input[type="radio"] {
 /* Style the label to look like a box */
 label.time, label.highlight {
     display: inline-block;
-    padding: 10px 30px;
+    padding: 10px;
     border-radius: 4px;
     margin-left:80px;
     cursor: pointer;

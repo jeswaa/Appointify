@@ -32,3 +32,4 @@ Route::get('/appointify/profileedit',[MainController::class,  'profileEdit'])->n
 
 Route::get('/appointify/userhomepage',[MainController::class, 'userHomepage'])->name('Mainfolder.userHomepage');
 Route::get('/appointify/book',[MainController::class, 'book'])->name('Mainfolder.BookingPage');
+Route::post('/appointify/book',[MainController::class, 'bookPost'])->name('booking.post');

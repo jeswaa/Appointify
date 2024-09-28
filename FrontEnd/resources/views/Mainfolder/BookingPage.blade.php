@@ -19,10 +19,10 @@
         <div class="first-col">
             <h1>Information</h1>
             <hr>
-            <input type="text" name="fullname" id="fullname" placeholder="Fullname...">
-            <input type="text" name="address" id="address" placeholder="Address...">
-            <input type="text" name="phonenumber" id="phonenumber" placeholder="Phone Number...">
-            <input type="text" name="email" id="email" placeholder="Email...">
+            <input type="text" name="fullname" id="fullname" placeholder="Fullname..."  value="{{ $user->fullname ?? '' }}">
+            <input type="text" name="address" id="address" placeholder="Address..." value="{{ $user->address ?? '' }}">
+            <input type="text" name="phonenumber" id="phonenumber" placeholder="Phone Number..." value="{{ $user->phonenumber ?? '' }}">
+            <input type="text" name="email" id="email" placeholder="Email..." value="{{ $user->email ?? '' }}">
         </div>
         <div class="second-col">
                 <h1 class="title">Time</h1>

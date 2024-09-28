@@ -89,7 +89,41 @@ class MainController extends Controller
     
     
     public function book(){
-        return view('Mainfolder.BookingPage');
+        $userId = session('user_id');
+
+        if (!$userId) {
+            return redirect()->route('Mainfolder.login')->with('error', 'You must be logged in to book an appointment.');
+        }
+        $user = AppointifyUser::find($userId);
+
+        if ($user) {
+            return view('Mainfolder.BookingPage', compact('user'));
+        } else {
+            return redirect()->route('Mainfolder.userHomepage')->with('error', 'User not found.');
+        }
+    }
+
+    public function bookPost(Request $request){
+        $request->validate([
+            'fullname' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'phonenumber' => 'required|numeric',
+            'email' => 'required|email',
+            'session-time' => 'required',
+            'payment-method' => 'required',
+        ]);
+        $booking = new Booking();
+        $booking->fullname = $request->fullname;
+        $booking->address = $request->address;
+        $booking->phonenumber = $request->phonenumber;
+        $booking->email = $request->email;
+        $booking->session_time = $request->input('session-time');
+        $booking->payment_method = $request->input('payment-method');
+        $booking->user_id = session('user_id');
+
+        $booking->save();
+
+        return redirect()->back()->with('success', 'Appointment booked successfully!');
     }
 
     

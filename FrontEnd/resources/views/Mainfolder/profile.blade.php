@@ -16,7 +16,7 @@
         <a href="" class=" icon"><i class="far fa-bell"  style="font-size: 40px;"></i></a>
     </div>
     <div class="main-col">
-        <a href="" class="icon"><i class="fas fa-pencil-alt"></i></a>
+        <a href="{{route('Mainfolder.editprofile_user')}}" class="icon"><i class="fas fa-pencil-alt"></i></a>
     @if($user)
         <div class="profPic">
             <img src="{{ asset('storage/'  . $user->uploadimage) }}" alt="Profile Picture" />
