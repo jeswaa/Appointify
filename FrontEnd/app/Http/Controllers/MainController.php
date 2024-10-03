@@ -107,7 +107,7 @@ class MainController extends Controller
         $request->validate([
             'fullname' => 'required|string|max:255',
             'address' => 'required|string|max:255',
-            'phonenumber' => 'required|numeric',
+            'phonenumber' => 'required|string',
             'email' => 'required|email',
             'session-time' => 'required',
             'payment-method' => 'required',
