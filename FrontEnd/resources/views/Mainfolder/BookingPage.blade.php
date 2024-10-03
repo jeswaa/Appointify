@@ -56,8 +56,10 @@
                 </div>
         </div>
         <div class="third-col">
-            <h2>Payment</h2>
-            <p>Choose Payment method below.</p>
+            <div class="heading">
+                <h2>Payment</h2>
+                <p>Choose Payment method below.</p>
+            </div>
             <div class="title">
                 <h2>Onsite Payment</h2> 
                 <input type="radio" id="onsite" name="onsite">
