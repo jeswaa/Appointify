@@ -68,10 +68,18 @@
             <div class="title">
                 <h2 class="online">Online Payment</h2>
                 <input type="radio" id="paypal" name="paypal">
-                <label for="paypal" class="ol">PayPal</label>
+                
+                <label for="paypal" class="ol">
+                    <div class="img-paypal">
+                        <img src="{{ asset('/images/paypal.png')}}" alt="">
+                    </div>
+                </label>
 
                 <input type="radio" id="G-cash" name="G-cash">
-                <label for="G-cash" class="ol">G-cash</label>
+                <label for="G-cash" class="ol">
+                    <div class="img-gcash">
+                        <img src="{{ asset('/images/gcash.png')}}" alt="">
+                    </div></label>
             </div>
             <button>Book</button>
         </div>
