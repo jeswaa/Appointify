@@ -125,22 +125,25 @@ input[type="radio"]:checked + label {
 .third-col{
     position: absolute;
     top: 21%;
-    right: 8%;
-    border-radius: 10px;
-    background-color: #97A97C;
+    right: 4%;
+    border:  solid 1px #718355;
     padding: 20px;
-    height: 500px;
+    padding-right: 90px;
+    padding-left: 70px;
+    border-radius: 15px;
 }
-.third-col h2{
-    color: #E5F9DB;
+.third-col .heading{
+    margin-left: -40px;
+}
+.third-col .heading h2{
+    color: #718355;
     font-size: 50px;
-    margin-left: 10px;
 }
-.third-col p{
+.third-col .heading p{
     font-size: 15px;
-    color: #E5F9DB;
+    color: #718355;
     margin-top: -5px;
-    margin-left: 10px;
+    margin-bottom: 20px;
 }
 .third-col .title h2{
     color: #4A4A4A;
@@ -149,10 +152,14 @@ input[type="radio"]:checked + label {
 }
 .third-col .title .ol{
     margin-bottom: 20px;
+    justify-content: end;
+    letter-spacing: 3px;
     padding-left: 150px;
 }
 .third-col .title .onsite{
     padding-left: 150px;
+    justify-content: end;
+    letter-spacing: 3px;
     margin-bottom: -10px;
 }
 .third-col .title input[type="radio"] {
@@ -161,8 +168,7 @@ input[type="radio"]:checked + label {
 .third-col .title  label{
     border: 2px solid #718355;
     padding: 20px;
-    width: 20%;
-    margin-left: 50px;
+    width: 50%;
     border-radius: 10px;
     display: flex;
 }
@@ -185,5 +191,6 @@ input[type="radio"]:checked + label {
     transition: .5s;
 }
 .third-col button:hover{
-    background-color: transparent;
+    background-color: #718355;
+    border: 3px solid #97A97C;
 }

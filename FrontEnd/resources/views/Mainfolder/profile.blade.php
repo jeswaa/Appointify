@@ -5,32 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/profile.css')}}">
-    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc" crossorigin="anonymous"></script>
-    <title>MyProfile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="back-btn">
-        <a href="{{route('Mainfolder.userHomepage')}}"><i class="fas fa-arrow-left" style="font-size: 40px;"></i></a><p>PROFILE</p> 
-        <a href="" class=" icon"><i class="far fa-bell"  style="font-size: 40px;"></i></a>
+        <a href="{{route('Mainfolder.userHomepage')}}"><i class="fas fa-arrow-left" style="font-size: 40px;"></i></a>
+        <p>PROFILE</p>
+        <a href="javascript:void(0)" class="icon" onclick="openSidePanel()">
+            <i class="far fa-bell" style="font-size: 40px;"></i>
+        </a>
     </div>
+
+    <!-- Notification Sidebar -->
+    <div id="notificationPanel" class="side-panel">
+        <a href="javascript:void(0)" class="close-btn" onclick="closeSidePanel()">
+            <i class="fas fa-times"></i>
+        </a>
+        <div class="side-panel-content">
+            <h2>Appointment Reminders</h2>
+            <ul id="notificationList">
+                <li>No new notifications...</li>
+            </ul>
+        </div>
+    </div>
+
     <div class="main-col">
         <a href="{{route('Mainfolder.editprofile_user')}}" class="icon"><i class="fas fa-pencil-alt"></i></a>
-    @if($user)
-        <div class="profPic">
-            <img src="{{ asset('storage/'  . $user->uploadimage) }}" alt="Profile Picture" />
-        </div>
-        <div class="info">
-            <h1>WELCOME BACK,</h1>
-            <h2>{{ $user->fullname }}</h2>
-            <p>{{$user->email}} | <span>{{$user->phonenumber}}</span></p>
-        </div>
-        
-    @else
-        <p>User not found.</p>
-    @endif
-
+        @if($user)
+            <div class="profPic">
+                <img src="{{ asset('storage/' . $user->uploadimage) }}" alt="Profile Picture" />
+            </div>
+            <div class="info">
+                <h1>WELCOME BACK,</h1>
+                <h2>{{ $user->fullname }}</h2>
+                <p>{{$user->email}} | <span>{{$user->phonenumber}}</span></p>
+            </div>
+        @else
+            <p>User not found.</p>
+        @endif
     </div>
+
+    <script>
+        function openSidePanel() {
+            document.getElementById("notificationPanel").classList.add("open-side-panel");
+        }
+
+        function closeSidePanel() {
+            document.getElementById("notificationPanel").classList.remove("open-side-panel");
+        }
+
+        // Example of how to dynamically add notifications to the list
+        function addNotification(message) {
+            const notificationList = document.getElementById('notificationList');
+            const newNotification = document.createElement('li');
+            newNotification.textContent = message;
+            notificationList.appendChild(newNotification);
+        }
+    </script>
 </body>
 </html>

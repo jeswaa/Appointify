@@ -64,8 +64,60 @@ body{
 .main-col .icon {
     position: absolute;
     top: 30px;
-    right: 50px; 
+    right: 60px; 
     font-size: 24px;
     color: #4A4A4A; 
     text-decoration: none;
+}
+
+/* Side panel for notifications */
+.side-panel {
+    width: 450px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    right: -600px; /* Hidden initially */
+    background-color: #718355;
+    transition: 0.3s ease;
+    padding: 10px;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.side-panel.open-side-panel {
+    right: 0; /* Visible when opened */
+}
+
+.side-panel .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 36px;
+    text-decoration: none;
+    color: #B5C99A;
+}
+
+.side-panel-content {
+    margin-top: 60px;
+    padding: 10px;
+}
+
+.side-panel-content h2 {
+    color: #B5C99A;
+    text-transform: uppercase;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.side-panel-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.side-panel-content ul li {
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 18px;
+    color: #4A4A4A;
 }
