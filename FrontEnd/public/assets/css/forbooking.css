@@ -128,7 +128,7 @@ input[type="radio"]:checked + label {
     right: 4%;
     border:  solid 1px #718355;
     padding: 20px;
-    padding-right: 90px;
+    padding-right: 70px;
     padding-left: 70px;
     border-radius: 15px;
 }
@@ -152,9 +152,32 @@ input[type="radio"]:checked + label {
 }
 .third-col .title .ol{
     margin-bottom: 20px;
-    justify-content: end;
     letter-spacing: 3px;
-    padding-left: 150px;
+}
+.third-col label.ol:hover, .third-col label.highlight:hover {
+    border: 2px solid #718355;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.third-col .title input[type="radio"]:checked + label {
+    border: 2px solid #4CAF50; /* Adjusted to use a visible color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Shadow effect */
+    background-color: #E5F9DB; /* Optional background color change */
+    transition: all 0.3s ease;
+}
+.third-col .title label:hover {
+    border: 2px solid #4CAF50; /* Adjusted to use a visible color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+.third-col .title  .img-paypal img{
+    height: 70px;
+    width: 90px;
+    margin-left: 80px;
+}
+.third-col .title .img-gcash img{
+    height: 50px;
+    width: 70px;
+    margin-left: 80px;
 }
 .third-col .title .onsite{
     padding-left: 150px;
@@ -168,7 +191,6 @@ input[type="radio"]:checked + label {
 .third-col .title  label{
     border: 2px solid #718355;
     padding: 20px;
-    width: 50%;
     border-radius: 10px;
     display: flex;
 }

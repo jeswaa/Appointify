@@ -11,22 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tblsignup', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
             $table->string('address');
-            $table->integer('phonenumber');
-            $table->string('gender');
-            $table->binary('uploadimage')->nullable();
-            $table->string('username');
-            $table->string('password')->nullable;
-            $table->string('google_id')->nullable();
-            $table->string('email')->unique();
+            $table->string('phonenumber');
+            $table->string('email');
+            $table->string('session_time');
+            $table->string('payment_method');
             $table->timestamps();
         });
     }
+
+    /**
+     * Reverse the migrations.
+     */
     public function down(): void
     {
-        Schema::dropIfExists('tblsignup');
+        Schema::dropIfExists('bookings');
     }
 };

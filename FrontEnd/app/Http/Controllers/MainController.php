@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\AppointifyUser;
+use App\Models\Booking;
 
 class MainController extends Controller
 {
@@ -103,15 +104,24 @@ class MainController extends Controller
         }
     }
 
-    public function bookPost(Request $request){
+    public function bookPost(Request $request)
+    {
+        // Validate the form inputs
         $request->validate([
-            'fullname' => 'required|string|max:255',
-            'address' => 'required|string|max:255',
-            'phonenumber' => 'required|string',
-            'email' => 'required|email',
-            'session-time' => 'required',
-            'payment-method' => 'required',
+            'session-time' => 'required',        // Session time is required
+            'payment-method' => 'required',      // Payment method is required
+            'email' => 'required|email',         // Email is used to fetch user details from tblsignup
         ]);
+
+        // Fetch the user details from the tblsignup table using the provided email
+        $user = AppointifyUser::where('email', $request->email)->first();
+
+        if (!$user) {
+            // If no user is found, return with an error message
+            return redirect()->back()->withErrors(['user_not_found' => 'User not found in the system.']);
+        }
+
+        // Create a new booking and populate it with user details and form inputs
         $booking = new Booking();
         $booking->fullname = $request->fullname;
         $booking->address = $request->address;
@@ -120,14 +130,11 @@ class MainController extends Controller
         $booking->session_time = $request->input('session-time');
         $booking->payment_method = $request->input('payment-method');
         $booking->user_id = session('user_id');
-
+        // Save the booking to the database
         $booking->save();
 
-        return redirect()->back()->with('success', 'Appointment booked successfully!');
+        // Redirect back with success message
+        return redirect(route('Mainfolder.userHomepage'))->with('success', 'Appointment booked successfully!');
     }
 
-    
-    public function profileEdit(){
-        return view('Mainfolder.editprofile_user');
-   }
 }

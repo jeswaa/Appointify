@@ -15,67 +15,80 @@
         <a href="{{route('Mainfolder.userHomepage')}}"><i class="fas fa-angle-left"></i></a>
         <h1>Book Appoinment</h1>
         </div>
-    <form action="#" method="post">
-        <div class="first-col">
-            <h1>Information</h1>
-            <hr>
-            <input type="text" name="fullname" id="fullname" placeholder="Fullname..."  value="{{ $user->fullname ?? '' }}">
-            <input type="text" name="address" id="address" placeholder="Address..." value="{{ $user->address ?? '' }}">
-            <input type="text" name="phonenumber" id="phonenumber" placeholder="Phone Number..." value="{{ $user->phonenumber ?? '' }}">
-            <input type="text" name="email" id="email" placeholder="Email..." value="{{ $user->email ?? '' }}">
-        </div>
-        <div class="second-col">
-                <h1 class="title">Time</h1>
-                    <hr class="divider">
-                    <div class="session">
-                        <h2 class="session-title">MORNING SESSION</h2>
-                        <div class="session-times">
-                            <input type="radio" id="session1" name="afternoon-session" value="8:00 - 9:00 AM">
-                            <label for="session1" class="time">8:00 - 9:00 AM</label>
-                            
-                            <input type="radio" id="session2" name="afternoon-session" value="9:30 - 10:30 AM">
-                            <label for="session2" class="time">9:30 - 10:30 AM</label>
-                            
-                            <input type="radio" id="session3" name="afternoon-session" value="11:00 - 12:00 AM">
-                            <label for="session3" class="time highlight">11:00 - 12:00 AM</label>
-                        </div>
-                    </div>
-                    <div class="session">
-                        <h2 class="session-title">AFTERNOON SESSION</h2>
-                        <div class="session-times">
-                            <input type="radio" id="session4" name="afternoon-session" value="1:00 - 2:00 PM">
-                            <label for="session4" class="time">1:00 - 2:00 PM</label>
-
-                            <input type="radio" id="session5" name="afternoon-session" value="2:30 - 3:30 PM">
-                            <label for="session5" class="time">2:30 - 3:30 PM</label>
-
-                            <input type="radio" id="session6" name="afternoon-session" value="4:00 - 5:00 PM">
-                            <label for="session6" class="time highlight">4:00 - 5:00 PM</label>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <div class="third-col">
-            <div class="heading">
-                <h2>Payment</h2>
-                <p>Choose Payment method below.</p>
+    <form action="{{route('booking.post')}}" method="POST">
+        @csrf
+            <div class="first-col">
+                <h1>Information</h1>
+                <hr>
+                <input type="text" name="fullname" id="fullname" placeholder="Fullname..."  value="{{ $user->fullname ?? '' }}">
+                <input type="text" name="address" id="address" placeholder="Address..." value="{{ $user->address ?? '' }}">
+                <input type="text" name="phonenumber" id="phonenumber" placeholder="Phone Number..." value="{{ $user->phonenumber ?? '' }}">
+                <input type="text" name="email" id="email" placeholder="Email..." value="{{ $user->email ?? '' }}">
             </div>
+
+            <div class="date">
+                <h1>Date</h1>
+                <input type="date" name="" id="">
+            </div>
+            <div class="second-col">
+                    <h1 class="title">Time</h1>
+                        <hr class="divider">
+                        <div class="session">
+                            <h2 class="session-title">MORNING SESSION</h2>
+                            <div class="session-times">
+                                <input type="radio" id="session1" name="afternoon-session" value="8:00 - 9:00 AM">
+                                <label for="session1" class="time">8:00 - 9:00 AM</label>
+                                
+                                <input type="radio" id="session2" name="afternoon-session" value="9:30 - 10:30 AM">
+                                <label for="session2" class="time">9:30 - 10:30 AM</label>
+                                
+                                <input type="radio" id="session3" name="afternoon-session" value="11:00 - 12:00 AM">
+                                <label for="session3" class="time highlight">11:00 - 12:00 AM</label>
+                            </div>
+                        </div>
+                        <div class="session">
+                            <h2 class="session-title">AFTERNOON SESSION</h2>
+                            <div class="session-times">
+                                <input type="radio" id="session4" name="afternoon-session" value="1:00 - 2:00 PM">
+                                <label for="session4" class="time">1:00 - 2:00 PM</label>
+
+                                <input type="radio" id="session5" name="afternoon-session" value="2:30 - 3:30 PM">
+                                <label for="session5" class="time">2:30 - 3:30 PM</label>
+
+                                <input type="radio" id="session6" name="afternoon-session" value="4:00 - 5:00 PM">
+                                <label for="session6" class="time highlight">4:00 - 5:00 PM</label>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="third-col">
+        <div class="heading">
+            <h2>Payment</h2>
+            <p>Choose Payment method below.</p>
+        </div>
             <div class="title">
-                <h2>Onsite Payment</h2> 
-                <input type="radio" id="onsite" name="onsite">
-                <label for="onsite"  class="onsite">Pay Onsite</label>
+                <h2>Onsite Payment</h2>
+                <input type="radio" id="onsite" name="payment"> <!-- All radio buttons share the same 'name' -->
+                <label for="onsite" class="onsite">Pay Onsite</label>
             </div>
             <div class="title">
                 <h2 class="online">Online Payment</h2>
-                <input type="radio" id="paypal" name="paypal">
-                <label for="paypal" class="ol">PayPal</label>
+                <input type="radio" id="paypal" name="payment" value="paypal">
+                <label for="paypal" class="ol">
+                    <div class="img-paypal">
+                        <img src="{{ asset('/images/paypal.png') }}" alt="PayPal">
+                    </div>
+                </label>
 
-                <input type="radio" id="G-cash" name="G-cash">
-                <label for="G-cash" class="ol">G-cash</label>
+                <input type="radio" id="gcash" name="payment" value="g-cash">
+                <label for="gcash" class="ol">
+                    <div class="img-gcash">
+                        <img src="{{ asset('/images/gcash.png') }}" alt="G-Cash">
+                    </div>
+                </label>
             </div>
             <button>Book</button>
-        </div>
-        
+        </div> 
     </form>
 </body>
 </html>

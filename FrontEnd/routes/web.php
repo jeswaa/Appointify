@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\Auth\GoogleController;
+use App\Http\Controllers\BookingController;
+use Laravel\Socialite\Facades\Socialite;
 
 
 Route::get('/', function () {
@@ -21,6 +24,9 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])->name('google.redirect');
+Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name('google.callback');
+
 Route::get('/appointify',[MainController::class, 'homepage'])->name('Mainfolder.homepage');
 
 Route::get('/appointify/login',[MainController::class, 'login'])->name('Mainfolder.login');
@@ -32,4 +38,4 @@ Route::get('/appointify/profileedit',[MainController::class,  'profileEdit'])->n
 
 Route::get('/appointify/userhomepage',[MainController::class, 'userHomepage'])->name('Mainfolder.userHomepage');
 Route::get('/appointify/book',[MainController::class, 'book'])->name('Mainfolder.BookingPage');
-Route::post('/appointify/book',[MainController::class, 'bookPost'])->name('booking.post');
+Route::post('/appointify/book',[BookingController::class, 'bookPost'])->name('booking.post');

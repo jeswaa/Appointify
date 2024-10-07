@@ -18,6 +18,7 @@ class AppointifyUser extends Model
         'gender',
         'uploadimage',
         'username',
+        'google_id',
         'password',
     ];
 }
