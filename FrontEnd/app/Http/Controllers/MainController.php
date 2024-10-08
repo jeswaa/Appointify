@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use App\Models\AppointifyUser;
 use App\Models\Booking;
 
@@ -16,22 +20,37 @@ class MainController extends Controller
     public function login(){
         return view('Mainfolder.login');
     }
-    public function loginPost(Request  $request){
+
+    public function loginPost(Request $request){
         $request->validate([
             "username" => "required",
             "password" => "required",
         ]);
-        $user = AppointifyUser::where('username', $request->username)->first();
-        if ($user && password_verify($request->password, $user->password)) {
-            session(['user' => $user]);
-            session(['user_id' => $user->id]);
-            return redirect(route('Mainfolder.userHomepage'));
+        
+        // Allow login with either username or email
+        $user = AppointifyUser::where('username', $request->username)
+                    ->orWhere('email', $request->username)
+                    ->first();
+
+        if (!$user) {
+            return redirect()->route('Mainfolder.login')->with('error', 'User not found.');
         }
-        return redirect(route('Mainfolder.login'))->with('error', 'Invalid Username or Password');
+
+        if (!password_verify($request->password, $user->password)) {
+            return redirect()->route('Mainfolder.login')->with('error', 'Incorrect password.');
+        }
+
+        // Successful login
+        session(['user' => $user]);
+        session(['user_id' => $user->id]);
+        \Log::info('User logged in: ' . $user->id);
+        return redirect(route('Mainfolder.userHomepage'));
     }
+
     public function signup(){
         return view('Mainfolder.signup');
     }
+
     public function signupPost(Request $request){
         $request->validate([
             "fullname" => "required",
@@ -66,18 +85,25 @@ class MainController extends Controller
     public function userHomepage(){
         return view('Mainfolder.userHomepage');
     }
+
     public function profile() {
         $userId = session('user_id');
     
         if (!$userId) {
-            return redirect()->route('login')->with('error', 'You must be logged in to view your profile.');
+            return redirect()->route('Mainfolder.login')->with('error', 'You must be logged in to view your profile.');
         }
     
         $user = AppointifyUser::find($userId);
     
         if ($user) {
+            // Use external image URL directly, if exists
+            $profileImage = (Str::startsWith($user->uploadimage, 'http'))
+                ? $user->uploadimage
+                : asset('storage/' . $user->uploadimage);
+    
             return view('Mainfolder.profile', [
                 'user' => $user,
+                'profileImage' => $profileImage,
             ]);
         } else {
             return redirect()->route('Mainfolder.userHomepage')->with('error', 'User not found.');
@@ -87,8 +113,7 @@ class MainController extends Controller
     protected function getCurrentUserId() {
         return session('user_id');
     }
-    
-    
+
     public function book(){
         $userId = session('user_id');
 
@@ -104,37 +129,41 @@ class MainController extends Controller
         }
     }
 
-    public function bookPost(Request $request)
-    {
-        // Validate the form inputs
-        $request->validate([
-            'session-time' => 'required',        // Session time is required
-            'payment-method' => 'required',      // Payment method is required
-            'email' => 'required|email',         // Email is used to fetch user details from tblsignup
-        ]);
-
-        // Fetch the user details from the tblsignup table using the provided email
-        $user = AppointifyUser::where('email', $request->email)->first();
-
-        if (!$user) {
-            // If no user is found, return with an error message
-            return redirect()->back()->withErrors(['user_not_found' => 'User not found in the system.']);
+    public function googleCallback() {
+        try {
+            // Fetch the user from Google
+            $googleUser = Socialite::driver('google')->user();
+            
+            // Log the retrieved user info for debugging
+            \Log::info('Google user info:', [
+                'name' => $googleUser->getName(),
+                'email' => $googleUser->getEmail(),
+                'avatar' => $googleUser->getAvatar()
+            ]);
+    
+            // Check if the user already exists in your database
+            $user = AppointifyUser::where('email', $googleUser->getEmail())->first();
+    
+            if (!$user) {
+                // If the user doesn't exist, create a new user
+                $user = new AppointifyUser();
+                $user->fullname = $googleUser->getName();
+                $user->email = $googleUser->getEmail();
+                $user->username = $googleUser->getEmail();
+                $user->uploadimage = $googleUser->getAvatar();
+                $user->password = bcrypt(Str::random(16));
+                $user->save();
+            }
+    
+            // Log user login
+            session(['user' => $user]);
+            session(['user_id' => $user->id]);
+            return redirect()->route('Mainfolder.userHomepage');
+    
+        } catch (\Exception $e) {
+            \Log::error('Google login error: ' . $e->getMessage());
+            return redirect()->route('Mainfolder.signup')->with('error', 'Login failed. Please try again.');
         }
-
-        // Create a new booking and populate it with user details and form inputs
-        $booking = new Booking();
-        $booking->fullname = $request->fullname;
-        $booking->address = $request->address;
-        $booking->phonenumber = $request->phonenumber;
-        $booking->email = $request->email;
-        $booking->session_time = $request->input('session-time');
-        $booking->payment_method = $request->input('payment-method');
-        $booking->user_id = session('user_id');
-        // Save the booking to the database
-        $booking->save();
-
-        // Redirect back with success message
-        return redirect(route('Mainfolder.userHomepage'))->with('success', 'Appointment booked successfully!');
     }
-
+    
 }

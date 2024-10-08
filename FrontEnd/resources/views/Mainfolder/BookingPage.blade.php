@@ -28,7 +28,7 @@
 
             <div class="date">
                 <h1>Date</h1>
-                <input type="date" name="" id="">
+                <input type="date" name="date" id="date">
             </div>
             <div class="second-col">
                     <h1 class="title">Time</h1>
@@ -68,7 +68,7 @@
         </div>
             <div class="title">
                 <h2>Onsite Payment</h2>
-                <input type="radio" id="onsite" name="payment"> <!-- All radio buttons share the same 'name' -->
+                <input type="radio" id="onsite" name="payment" value="onsite"> <!-- All radio buttons share the same 'name' -->
                 <label for="onsite" class="onsite">Pay Onsite</label>
             </div>
             <div class="title">

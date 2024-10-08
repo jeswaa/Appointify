@@ -26,10 +26,16 @@
             <input type="password" name="password" id="password" placeholder="Password...">
             <button>Submit</button>
         </form>
+        
+        @if(session('error'))
+            <div class="error-message">
+                <p>{{ session('error') }}</p>
+            </div>
+        @endif
 
         <div class="social-login">
             <h2>Or sign up with</h2>
-            <a href="{{ route('google.redirect') }}" class="google-button">Google</a>
+            <a href="{{ route('auth.google') }}" class="google-button">Google</a>
         </div>
 
         <div class="lower-part">

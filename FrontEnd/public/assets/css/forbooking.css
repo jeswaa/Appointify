@@ -216,3 +216,30 @@ input[type="radio"]:checked + label {
     background-color: #718355;
     border: 3px solid #97A97C;
 }
+.date{
+    background-color: #97A97C;
+    padding: 20px;
+    margin-left: 7%;
+    margin-top: 30px;
+    width: 55%;
+    border-radius: 10px;
+}
+.date h1{
+    color: #E5F9DB;
+    font-size: 40px;
+}
+.date input[type="date"] {
+    padding: 10px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 5px;
+    color: #E5F9DB;
+    background-color: #718355;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 95%;
+}
+.date input[type="date"]:focus {
+    border-color: #E5F9DB;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    outline: none;
+}

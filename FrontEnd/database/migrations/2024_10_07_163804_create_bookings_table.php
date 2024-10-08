@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
-            $table->string('address');
-            $table->string('phonenumber');
+            $table->string('address')->nullable;
+            $table->string('phonenumber')->nullable;
             $table->string('email');
+            $table->string('date');
             $table->string('session_time');
             $table->string('payment_method');
             $table->timestamps();

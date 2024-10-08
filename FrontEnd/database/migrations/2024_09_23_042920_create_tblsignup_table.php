@@ -14,14 +14,14 @@ return new class extends Migration
         Schema::create('tblsignup', function (Blueprint $table) {
             $table->id();
             $table->string('fullname');
-            $table->string('address');
-            $table->integer('phonenumber');
-            $table->string('gender');
+            $table->string('address')->nullable();
+            $table->string('phonenumber')->nullable();
+            $table->string('gender')->nullable();
             $table->binary('uploadimage')->nullable();
             $table->string('username');
             $table->string('password')->nullable;
-            $table->string('google_id')->nullable();
             $table->string('email')->unique();
+            $table->string('google_id')->nullable();
             $table->timestamps();
         });
     }

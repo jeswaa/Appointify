@@ -23,9 +23,13 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+Route::middleware(['web'])->group(function () {
+    Route::get('auth/google', function () {
+        return Socialite::driver('google')->redirect();
+    })->name('auth.google');
 
-Route::get('/auth/google/redirect', [GoogleController::class, 'redirect'])->name('google.redirect');
-Route::get('/auth/google/callback', [GoogleController::class, 'callback'])->name('google.callback');
+    Route::get('auth/google/callback', [MainController::class, 'googleCallback']);
+});
 
 Route::get('/appointify',[MainController::class, 'homepage'])->name('Mainfolder.homepage');
 

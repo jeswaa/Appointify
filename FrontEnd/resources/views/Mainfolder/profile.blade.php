@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/profile.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
+    <title>MyProfile</title>
 </head>
 <body>
     <div class="back-btn">
@@ -35,7 +36,7 @@
         <a href="{{route('Mainfolder.editprofile_user')}}" class="icon"><i class="fas fa-pencil-alt"></i></a>
         @if($user)
             <div class="profPic">
-                <img src="{{ asset('storage/' . $user->uploadimage) }}" alt="Profile Picture" />
+                <img src="{{ $profileImage }}" alt="Profile Image" ">
             </div>
             <div class="info">
                 <h1>WELCOME BACK,</h1>
