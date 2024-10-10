@@ -162,6 +162,7 @@ class MainController extends Controller
     
         } catch (\Exception $e) {
             \Log::error('Google login error: ' . $e->getMessage());
+            \Log::info('Google User:', ['user' => $googleUser]);
             return redirect()->route('Mainfolder.signup')->with('error', 'Login failed. Please try again.');
         }
     }
