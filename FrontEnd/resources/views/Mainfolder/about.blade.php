@@ -13,13 +13,12 @@
 <body>
     <div class="back-btn">
         <a href="{{route('Mainfolder.userHomepage')}}"><i class="fas fa-arrow-left" style="font-size: 40px;"></i></a>
-        <h1>PROFILE</h1>
+        <p>PROFILE</p>
         <a href="javascript:void(0)" class="icon" onclick="openSidePanel()">
             <i class="far fa-bell" style="font-size: 40px;"></i>
         </a>
     </div>
 
-    <!-- Notification Sidebar -->
     <div id="notificationPanel" class="side-panel">
         <a href="javascript:void(0)" class="close-btn" onclick="closeSidePanel()">
             <i class="fas fa-times"></i>
@@ -33,11 +32,7 @@
     </div>
 
     <div class="main-col">
-        <!-- Edit profile button only shown on profile page -->
-        @if(!isset($isAboutPage))
-            <a href="{{route('Mainfolder.editprofile_user')}}" class="icon"><i class="fas fa-pencil-alt"></i></a>
-        @endif
-
+        <a href="{{route('Mainfolder.editprofile_user')}}" class="icon"><i class="fas fa-pencil-alt"></i></a>
         @if($user)
             <div class="profPic">
                 <img src="{{ $profileImage }}" alt="Profile Image">
@@ -45,7 +40,7 @@
             <div class="info">
                 <h1>WELCOME BACK,</h1>
                 <h2>{{ $user->fullname }}</h2>
-                <h3>{{$user->email}} | <span>{{$user->phonenumber}}</span></h3>
+                <p>{{$user->email}} | <span>{{$user->phonenumber}}</span></p>
             </div>
         @else
             <p>User not found.</p>
@@ -53,46 +48,13 @@
     </div>
 
     <div class="links-col">
-        <a href="{{route('Mainfolder.appointment')}}">Appointments</a>
-        <a href="{{route('Mainfolder.about')}}">About</a>
+        <div class="toSched"><a href="{{route('Mainfolder.appointment')}}">Appointment</a></div>
+        <div class="toAbout"><a href="{{route('Mainfolder.about')}}">About</a></div>
     </div>
 
-    <!-- About section content -->
-    @if(isset($isAboutPage) && $isAboutPage)
-        <div class="about-col">
-            <p><strong>Address:</strong> {{ $user->address }}</p>
-            <p><strong>Gender:</strong> {{ $user->gender }}</p>
-            <p><strong>Username:</strong> {{ $user->username }}</p>
-        </div>
-    @endif
-
-    @if(isset($isAppointmentPage) && $isAppointmentPage)
-        @if($appointments && count($appointments) > 0)
-            @foreach($appointments as $appointment)
-                <!-- Each appointment will be in its own container -->
-                <div class="appointment-col">
-                    <div class="date-col">
-                        <div class="month">{{ \Carbon\Carbon::parse($appointment->date)->format('F') }}</div>
-                        <div class="day">{{ \Carbon\Carbon::parse($appointment->date)->format('d') }}</div>
-                        <div class="year">{{ \Carbon\Carbon::parse($appointment->date)->format('Y') }}</div>
-                    </div>
-                    <div class="time-col">
-                        <strong>Time</strong>
-                        <div class="time">{{ $appointment->session_time }}</div>
-                    </div>
-                    <div class="reschedbtn">
-                        <a href="#">Reschedule</a>
-                    </div>
-                </div>
-            @endforeach
-        @else
-        <p>No appointments</p>
-           
-        @endif
-    @endif
-
+    <div class="about-col">
+        <h1>hello</h1>
     </div>
-
     <script>
         function openSidePanel() {
             document.getElementById("notificationPanel").classList.add("open-side-panel");

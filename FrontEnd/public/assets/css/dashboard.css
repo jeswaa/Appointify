@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins';
+}
+body{
+    background-color: #CFE1B9;
+}
+.side-col {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start (left) */
+    padding: 20px; /* Optional: add some padding */
+    background-color: #E5F9DB; /* Optional: set a background color */
+    width: 220px; /* Set a width for the sidebar */
+    height: 100vh; /* Make it full height of the viewport */
+    border-top-right-radius: 50px;
+}
+
+.side-col img {
+    margin-top: 50px; /* Space between the logo and the links */
+    width: 200px;
+}
+
+.side-col a {
+    margin-bottom: 25px;
+    padding: 10px; /* Space between the links */
+    font-size: 20px;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 20px;
+    padding: 10px;
+    text-transform: uppercase;
+    text-decoration: none; /* Remove underline from links */
+    color: #718355;
+    transition: .2s ease;
+}
+
+.side-col span {
+    margin-left: 15px; /* Space between icon and text */
+}
+.side-col a:hover{
+    background-color: #718355;
+    border-radius: 20px;
+    padding: 10px;
+    color: #E5F9DB;
+}
+.side-col .logoutbtn{
+    margin-left: 70px;
+    margin-top: 50px;
+}
+.side-col .logoutbtn a{
+    font-size: 30px;
+    font-weight: bold;
+    color: #718355;
+}
+.side-col .logoutbtn a:hover{
+    background-color: transparent;
+    color: #4A4A4A;
+}
+
+
