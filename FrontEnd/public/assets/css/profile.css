@@ -121,3 +121,96 @@ body{
     font-size: 18px;
     color: #4A4A4A;
 }
+.links-col{
+    display: flex;
+    margin-left: 7%;
+    margin-top: 30px;
+}
+.links-col a {
+    position: relative;
+    margin-right: 30px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #718355;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.links-col a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #718355;
+    transition: all 0.4s ease;
+    transform: translateX(-50%);
+}
+
+.links-col a:hover::before {
+    width: 100%;
+    left: 0;
+    transform: translateX(0);
+}
+
+.about-col {
+    margin-top: 30px;
+    margin-left: 7%;
+}
+.appointment-col {
+    background-color: #B5C99A;
+    padding: 30px;
+    margin-left: 7%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 83%;
+    border-radius: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.appointment-col .date-col {
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 50px;
+}
+
+.appointment-col .date-col .month {
+    font-size: 30px;
+    margin-bottom: -50px;
+    color: #4A4A4A;
+}
+
+.appointment-col .date-col .day {
+    font-size: 150px;
+    margin-bottom: -60px;
+    color: #CFE1B9;
+}
+
+.appointment-col .date-col .year {
+    font-size: 40px;
+    letter-spacing: 15px;
+    color: #4A4A4A;
+}
+
+.appointment-col .time-col {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    flex-grow: 1; 
+    padding-left: 20px;
+    padding-bottom: 95px;
+}
+.appointment-col .time-col strong{
+    padding-right: 31%;
+}
+.appointment-col .time-col .time{
+    font-size: 50px;
+}
+
+

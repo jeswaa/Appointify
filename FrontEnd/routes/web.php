@@ -37,8 +37,13 @@ Route::get('/appointify/login',[MainController::class, 'login'])->name('Mainfold
 Route::post('/appointify/login',[MainController::class, 'loginPost'])->name('login.post');
 Route::get('/appointify/signup',[MainController::class, 'signup'])->name('Mainfolder.signup');
 Route::post('/appointify/signup',[MainController::class, 'signupPost'])->name('signup.post');
+
 Route::get('/appointify/userhomepage/UserProfile', [MainController::class, 'profile'])->name('Mainfolder.profile');
 Route::get('/appointify/profileedit',[MainController::class,  'profileEdit'])->name('Mainfolder.editprofile_user');
+Route::get('/appointify/userhomepage/UserProfile/about',[MainController::class,  'about'])->name('Mainfolder.about');
+Route::get('/appointify/userhomepage/UserProfile/appointment',[MainController::class,  'appointment'])->name('Mainfolder.appointment');
+
+
 
 Route::get('/appointify/userhomepage',[MainController::class, 'userHomepage'])->name('Mainfolder.userHomepage');
 Route::get('/appointify/book',[MainController::class, 'book'])->name('Mainfolder.BookingPage');
