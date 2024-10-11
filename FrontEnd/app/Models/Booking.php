@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\AppointifyUser; // Corrected class name
 
 class Booking extends Model
 {
@@ -14,7 +15,7 @@ class Booking extends Model
 
     // Specify the fillable properties to allow mass assignment
     protected $fillable = [
-        'user_id',
+        'id',
         'fullname',
         'address',
         'phonenumber',
@@ -26,6 +27,7 @@ class Booking extends Model
     // Define the relationship with the User model (assuming you have a User model for tblsignup)
     public function user()
     {
-        return $this->belongsTo(AppontifyUser::class, 'id');
+        return $this->belongsTo(AppointifyUser::class, 'user_id'); // Ensure 'user_id' matches the column in bookings table
     }
+    
 }

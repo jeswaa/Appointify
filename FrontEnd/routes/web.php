@@ -41,6 +41,11 @@ Route::post('/appointify/signup',[MainController::class, 'signupPost'])->name('s
 
 Route::post('/appointify/login/loginAdmin', [AdminController::class, 'adminLogin'])->name('admin.login');
 Route::get('/appointify/adminDashboard',[AdminController::class, 'adminView'])->name('Mainfolder.adminDashboard');
+Route::get('/appointify/adminDashboard/Appointments',[AdminController::class, 'adminAppointments'])->name('Mainfolder.adminAppointment');
+Route::get('/appointify/logout', [MainController::class, 'logout'])->name('logout');
+
+
+Route::post('/send-reminder/{bookingId}', [BookingController::class, 'sendReminderToUser'])->name('send.reminder');
 
 Route::get('/appointify/userhomepage/UserProfile', [MainController::class, 'profile'])->name('Mainfolder.profile');
 Route::get('/appointify/profileedit',[MainController::class,  'profileEdit'])->name('Mainfolder.editprofile_user');

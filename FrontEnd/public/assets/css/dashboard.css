@@ -5,6 +5,7 @@
 }
 body{
     background-color: #CFE1B9;
+    display: flex; 
 }
 .side-col {
     display: flex; /* Use flexbox for layout */
@@ -58,5 +59,66 @@ body{
     background-color: transparent;
     color: #4A4A4A;
 }
+
+/* APPOINMENT-COL */
+.appointment-col{
+    margin-top: 10%;
+    flex: 1; /* Take remaining space */
+    padding: 20px; /* Padding inside the appointment column */
+}
+.table {
+    overflow-y: auto; /* Horizontal scroll for tables */
+}
+table {
+    width: 100%; /* Full width of the appointment column */
+    border-collapse: collapse; /* Collapse borders */
+}
+th, td {
+    border: 1px solid #ccc; /* Table cell borders */
+    padding: 10px; /* Padding inside table cells */
+    text-align: left; /* Align text to the left */
+}
+tr:nth-child(odd) {
+    background-color: white; /* White for odd rows */
+}
+
+tr:nth-child(even) {
+    background-color: #007bff; /* Blue for even rows */
+    color: white; /* Text color for better contrast */
+}
+
+th {
+    background-color: #f2f2f2; /* Header background */
+}
+
+.alert {
+    margin-top: 20px; /* Margin for alerts */
+}
+.top-right-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 15px;
+    background-color: #d4edda; /* Success background */
+    color: #155724; /* Success text color */
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 1; /* Start fully visible */
+    transition: opacity 1s ease-in-out, visibility 0s 1s; /* 1s fade-out */
+}
+
+.alert-danger {
+    background-color: #f8d7da; /* Error background */
+    color: #721c24; /* Error text color */
+}
+
+.top-right-alert.fade-out {
+    opacity: 0; /* Fade to transparent */
+    visibility: hidden; /* Ensure it's completely gone after fading */
+}
+
+
 
 

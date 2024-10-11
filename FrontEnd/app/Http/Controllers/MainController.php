@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
 use App\Models\AppointifyUser;
@@ -106,9 +107,16 @@ class MainController extends Controller
                 ? $user->uploadimage
                 : asset('storage/' . $user->uploadimage);
     
+            // Fetch notifications for the user using the user_id
+            $notifications = DB::table('notifications')
+                ->where('id', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
+    
             return view('Mainfolder.profile', [
                 'user' => $user,
                 'profileImage' => $profileImage,
+                'notifications' => $notifications, // Pass notifications to the view
             ]);
         } else {
             return redirect()->route('Mainfolder.userHomepage')->with('error', 'User not found.');
@@ -190,17 +198,23 @@ class MainController extends Controller
             $profileImage = (Str::startsWith($user->uploadimage, 'http'))
                 ? $user->uploadimage
                 : asset('storage/' . $user->uploadimage);
+            
+            // Fetch notifications for the user using the user_id
+            $notifications = DB::table('notifications')
+                ->where('id', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
     
             return view('Mainfolder.profile', [
                 'user' => $user,
                 'profileImage' => $profileImage,
-                'isAboutPage' => true, // Flag to indicate it's the about page
+                'isAboutPage' => true,
+                'notifications' => $notifications, // Pass notifications to the view
             ]);
         } else {
             return redirect()->route('Mainfolder.userHomepage')->with('error', 'User not found.');
         }
     }
-    
 
     // Appointment page (uses profile template with isAppointmentPage flag)
     public function appointment() {
@@ -214,22 +228,37 @@ class MainController extends Controller
     
         if ($user) {
             $appointments = Booking::where('email', $user->email)
-                ->orderBy('date', 'asc') // Sorting by date in ascending order to show latest to oldest
+                ->orderBy('date', 'asc')
                 ->get();
     
             $profileImage = (Str::startsWith($user->uploadimage, 'http'))
                 ? $user->uploadimage
                 : asset('storage/' . $user->uploadimage);
-    
+            
+            // Fetch notifications for the user using the user_id
+            $notifications = DB::table('notifications')
+                ->where('id', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
+                
             return view('Mainfolder.profile', [
                 'user' => $user,
                 'profileImage' => $profileImage,
                 'isAppointmentPage' => true,
-                'appointments' => $appointments
+                'appointments' => $appointments,
+                'notifications' => $notifications, // Pass notifications to the view
             ]);
         } else {
             return redirect()->route('Mainfolder.userHomepage')->with('error', 'User not found.');
         }
     }
-    
+    public function logout()
+    {
+        // Clear session data or custom session handling
+        session()->flush(); // Clears all session data
+        
+        // Redirect to login or homepage
+        return redirect()->route('Mainfolder.homepage')->with('success', 'Logged out successfully.');
+    }
+
 }

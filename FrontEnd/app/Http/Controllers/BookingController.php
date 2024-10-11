@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\AppointifyUser;
+use App\Models\Notification;
 
 class BookingController extends Controller
 {
@@ -42,5 +43,43 @@ class BookingController extends Controller
             return back()->withErrors(['error' => 'User not found']);
         }
     }
+    public function sendReminderToUser($bookingId)
+{
+    // Fetch the booking information from the booking table
+    $booking = \DB::table('bookings')->where('id', $bookingId)->first();
+
+    if ($booking) {
+        // Fetch the user's information from the tblsignup table using the email from the booking
+        $user = \DB::table('tblsignup')->where('email', $booking->email)->first();
+
+        if ($user) {
+            // Prepare the reminder message
+            $reminderMessage = "Hello " . $user->fullname . ",\n\n"
+                            . "This is a reminder for your appointment on " 
+                            . $booking->date . " at " . $booking->session_time . ".\n\n"
+                            . "Thank you!";
+
+            // Save the reminder message in the notifications table
+            \DB::table('notifications')->insert([
+                'id' => $user->id, // Store the user's ID to associate the reminder
+                'message' => $reminderMessage,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+
+            // Log the reminder message
+            \Log::info("Reminder sent to " . $user->fullname . ": " . $reminderMessage);
+            
+            // Store this message in a session to display on the frontend
+            return redirect()->back()->with('success', 'Reminder sent successfully to ' . $user->fullname);
+        } else {
+            // If no user found with the email in tblsignup
+            return redirect()->back()->with('error', 'No user found with the provided email in the booking.');
+        }
+    }
+
+    return redirect()->back()->with('error', 'Booking not found');
+}
+
 
 }

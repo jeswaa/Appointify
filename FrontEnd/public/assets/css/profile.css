@@ -101,7 +101,10 @@ body{
     margin-top: 60px;
     padding: 10px;
 }
-
+.list-group{
+    max-height: 700px;
+    overflow-y: scroll;
+}
 .side-panel-content h2 {
     color: #B5C99A;
     text-transform: uppercase;
@@ -121,6 +124,7 @@ body{
     font-size: 18px;
     color: #4A4A4A;
 }
+
 .links-col{
     display: flex;
     margin-left: 7%;
@@ -244,5 +248,10 @@ p{
     border-radius: 20px;
     padding: 10px;
 }
+
+
+
+
+
 
 

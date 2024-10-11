@@ -8,11 +8,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/profile.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
-    <title>MyProfile</title>
+    <title>My Profile</title>
 </head>
 <body>
     <div class="back-btn">
-        <a href="{{route('Mainfolder.userHomepage')}}"><i class="fas fa-arrow-left" style="font-size: 40px;"></i></a>
+        <a href="{{ route('Mainfolder.userHomepage') }}"><i class="fas fa-arrow-left" style="font-size: 40px;"></i></a>
         <h1>PROFILE</h1>
         <a href="javascript:void(0)" class="icon" onclick="openSidePanel()">
             <i class="far fa-bell" style="font-size: 40px;"></i>
@@ -25,17 +25,22 @@
             <i class="fas fa-times"></i>
         </a>
         <div class="side-panel-content">
-            <h2>Appointment Reminders</h2>
-            <ul id="notificationList">
-                <li>No new notifications...</li>
+            <h2>Notifications</h2>
+            <ul class="list-group" id="notificationList">
+                @if($notifications->isEmpty())
+                    <p style="color: #fff;">No new notifications</p>
+                @else
+                    @foreach ($notifications as $notification)
+                        <p style="color: #fff;">{{ $notification->message }}</p>
+                    @endforeach
+                @endif
             </ul>
         </div>
     </div>
-
     <div class="main-col">
         <!-- Edit profile button only shown on profile page -->
         @if(!isset($isAboutPage))
-            <a href="{{route('Mainfolder.editprofile_user')}}" class="icon"><i class="fas fa-pencil-alt"></i></a>
+            <a href="{{ route('Mainfolder.editprofile_user') }}" class="icon"><i class="fas fa-pencil-alt"></i></a>
         @endif
 
         @if($user)
@@ -45,7 +50,7 @@
             <div class="info">
                 <h1>WELCOME BACK,</h1>
                 <h2>{{ $user->fullname }}</h2>
-                <h3>{{$user->email}} | <span>{{$user->phonenumber}}</span></h3>
+                <h3>{{ $user->email }} | <span>{{ $user->phonenumber }}</span></h3>
             </div>
         @else
             <p>User not found.</p>
@@ -53,8 +58,8 @@
     </div>
 
     <div class="links-col">
-        <a href="{{route('Mainfolder.appointment')}}">Appointments</a>
-        <a href="{{route('Mainfolder.about')}}">About</a>
+        <a href="{{ route('Mainfolder.appointment') }}">Appointments</a>
+        <a href="{{ route('Mainfolder.about') }}">About</a>
     </div>
 
     <!-- About section content -->
@@ -86,12 +91,9 @@
                 </div>
             @endforeach
         @else
-        <p>No appointments</p>
-           
+            <p>No appointments</p>
         @endif
     @endif
-
-    </div>
 
     <script>
         function openSidePanel() {
