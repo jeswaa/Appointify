@@ -87,8 +87,10 @@
                     </div>
                 </label>
             </div>
-            <button>Book</button>
+            <button id="bookBtn">Book</button>
         </div> 
     </form>
+
+     
 </body>
 </html>

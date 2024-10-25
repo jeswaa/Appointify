@@ -25,25 +25,47 @@
             <i class="fas fa-times"></i>
         </a>
         <div class="side-panel-content">
-            <h2>Notifications</h2>
+            <h2>Appointment Reminders</h2>
             <ul class="list-group" id="notificationList">
                 @if($notifications->isEmpty())
-                    <p style="color: #fff;">No new notifications</p>
+                    <li>No new notifications</li>
                 @else
                     @foreach ($notifications as $notification)
-                        <p style="color: #fff;">{{ $notification->message }}</p>
+                        <li class="list-group-item">
+                            <div class="message">
+                                <!-- Delete Button -->
+                                <form action="{{ route('reminders.delete', $notification->id) }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="btn-link" title="Delete">
+                                        <i class="fas fa-times" style="font-size: 30px;"></i>
+                                    </button>
+                                </form>
+                                <div class="date-time">
+                                     <div class="time">
+                                        <p>{{ $notification->session_time }}</p>
+                                    </div>
+                                    <div class="date">
+                                        <p>{{ $notification->date }}</p>
+                                    </div>
+                                </div>
+                                <div class="notification-message">
+                                    <span>{{ $notification->message }}</span>
+                                </div>
+                            </div>
+                        </li>
                     @endforeach
                 @endif
             </ul>
         </div>
     </div>
+
     <div class="main-col">
         <!-- Edit profile button only shown on profile page -->
         @if(!isset($isAboutPage))
             <a href="{{ route('Mainfolder.editprofile_user') }}" class="icon"><i class="fas fa-pencil-alt"></i></a>
         @endif
 
-        @if($user)
+        @if(isset($user))
             <div class="profPic">
                 <img src="{{ $profileImage }}" alt="Profile Image">
             </div>

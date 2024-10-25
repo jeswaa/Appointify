@@ -13,7 +13,7 @@
 <body>
     <div class="side-col">
         <img src="{{ asset('/images/logo.png') }}" alt="logo">
-        <a href=""><i class="fas fa-tachometer-alt"></i><span>dashboard</span></a>
+        <a href="{{ route('Mainfolder.adminDashboard')}}"><i class="fas fa-tachometer-alt"></i><span>dashboard</span></a>
         <a href="{{route('Mainfolder.adminAppointment')}}"><i class="far fa-calendar-check"></i><span>appointments</span></a>
         <a href=""><i class="fas fa-user"></i><span>users</span></a>
         <a href=""><i class="fas fa-comment-dots"></i><span>reviews</span></a>

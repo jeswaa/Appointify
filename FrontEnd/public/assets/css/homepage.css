@@ -136,30 +136,31 @@ body {
     height: 600px;
     width: 850px;
 }
-button{
+.button{
     margin-left: 100px;
+    margin-top: 50px;
+}
+.button a{
     background-color: #718355;
     padding: 15px;
+    padding-left: 5%;
+    padding-right: 5%;
     border-radius: 30px;
     border: none;
     margin-top: 50px;
-    width: 30%;
     transition: .5s;
     cursor: pointer;
-}
-button:hover{
-    background-color: #97A97C;
-}
-button a{
     text-decoration: none;
     font-weight: bold;
     font-family: "Poppins";
     color: #4A4A4A;
     font-size: 30px;
     transition: .5s;
+    text-align: center;
 }
-button a:hover{
-    color: #718355;
+.button a:hover{
+    color: #B5C99A;
+    background-color: #4A4A4A;
 }
 
 /* Middle Part */

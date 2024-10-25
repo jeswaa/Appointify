@@ -44,42 +44,91 @@ class BookingController extends Controller
         }
     }
     public function sendReminderToUser($bookingId)
-{
-    // Fetch the booking information from the booking table
-    $booking = \DB::table('bookings')->where('id', $bookingId)->first();
+    {
+        $booking = \DB::table('bookings')->where('id', $bookingId)->first();
 
-    if ($booking) {
-        // Fetch the user's information from the tblsignup table using the email from the booking
-        $user = \DB::table('tblsignup')->where('email', $booking->email)->first();
+        if ($booking) {
+            $user = \DB::table('tblsignup')->where('email', $booking->email)->first();
 
-        if ($user) {
-            // Prepare the reminder message
-            $reminderMessage = "Hello " . $user->fullname . ",\n\n"
-                            . "This is a reminder for your appointment on " 
-                            . $booking->date . " at " . $booking->session_time . ".\n\n"
-                            . "Thank you!";
+            if ($user) {
+                $formattedDate = date('F j, Y', strtotime($booking->date));
+                $sessionTime = $booking->session_time;
 
-            // Save the reminder message in the notifications table
-            \DB::table('notifications')->insert([
-                'id' => $user->id, // Store the user's ID to associate the reminder
-                'message' => $reminderMessage,
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+                // Only show the user name in the reminder message
+                $reminderMessage = "Hello, \n" . $user->fullname . "\nWe look forward to seeing you soon!";
 
-            // Log the reminder message
-            \Log::info("Reminder sent to " . $user->fullname . ": " . $reminderMessage);
-            
-            // Store this message in a session to display on the frontend
-            return redirect()->back()->with('success', 'Reminder sent successfully to ' . $user->fullname);
+
+                // Insert the notification with name only and store date and time separately
+                \DB::table('notifications')->insert([
+                    'user_id' => $user->id,
+                    'message' => $reminderMessage,
+                    'date' => $formattedDate,
+                    'session_time' => $sessionTime,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+
+                \Log::info("Reminder sent to " . $user->fullname . ": " . strip_tags($reminderMessage));
+
+                return redirect()->back()->with('success', 'Reminder sent successfully to ' . $user->fullname);
+            } else {
+                return redirect()->back()->with('error', 'No user found with the provided email in the booking.');
+            }
+        }
+
+        return redirect()->back()->with('error', 'Booking not found');
+    }
+
+    public function deleteReminder($notificationId)
+    {
+        // Find the notification by ID
+        $notification = \DB::table('notifications')->where('id', $notificationId)->first();
+    
+        if ($notification) {
+            // Delete the notification
+            \DB::table('notifications')->where('id', $notificationId)->delete();
+    
+            \Log::info("Notification deleted for user ID: " . $notification->id);
+    
+            return redirect()->back()->with('success', 'Reminder deleted successfully.');
         } else {
-            // If no user found with the email in tblsignup
-            return redirect()->back()->with('error', 'No user found with the provided email in the booking.');
+            return redirect()->back()->with('error', 'Reminder not found.');
         }
     }
 
-    return redirect()->back()->with('error', 'Booking not found');
-}
 
+    public function getUserAppointments()
+    {
+        $userId = session('user_id'); // Fetch user ID from session
+
+        if (!$userId) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        $appointments = Booking::where('id', $userId)->get();
+
+        $events = $appointments->map(function ($appointment) {
+            return [
+                'title' => 'Session at ' . $appointment->session_time, // Customize the title
+                'start' => $appointment->date . 'T' . $appointment->session_time, // Start time
+                'end' => $appointment->date . 'T' . $appointment->end_time, // End time (make sure to define end_time in your Booking model)
+            ];
+        });
+
+        return response()->json($events);
+    }
+    public function showNotifications()
+    {
+        $userId = session('user_id'); // Fetch user ID from session
+
+        if (!$userId) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        // Fetch notifications for the logged-in user
+        $notifications = Notification::where('user_id', $userId)->get();
+
+        return view('Mainfolder.profile', compact('notifications')); // Ensure this view file exists
+    }
 
 }

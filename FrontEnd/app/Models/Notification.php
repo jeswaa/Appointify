@@ -9,5 +9,6 @@ class Notification extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_email', 'message', 'is_read'];
+    protected $table = 'notifications'; // Specify the table if not following naming convention
+    protected $fillable = ['user_id', 'message', 'date', 'session_time', 'created_at', 'updated_at']; // Add user_id if needed
 }

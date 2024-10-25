@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notifications', function (Blueprint $table) {
+        Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->string('message');
-            $table->string('date');
-            $table->string('session_time');
-            $table->boolean('is_read')->default(false);
+            $table->string('fullname');
+            $table->string('uploadimage')->nullable();
+            $table->text('feedback_message');
+            $table->integer('star')->default(1);
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('notifications');
+        Schema::dropIfExists('feedbacks');
     }
 };

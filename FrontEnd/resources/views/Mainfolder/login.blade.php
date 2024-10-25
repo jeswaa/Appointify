@@ -12,7 +12,11 @@
 </head>
 <body>
     <div class="container" animate__slideInRight>
-        <div class="logo"><img src="{{ asset('/images/logo.png') }}" alt=""><a href="{{ route('Mainfolder.homepage') }}"><p>Appointify</p></a></div>
+        <div class="logo">
+            <a href="{{ route('Mainfolder.homepage') }}">
+                <img src="{{ asset('/images/logo_2.0.png') }}" alt="">
+            </a>
+        </div>
         <h1>Hello There!</h1>
         <div class="adminIcon">
             <a href="#" class="tooltip" id="adminIcon">
@@ -22,14 +26,14 @@
         </div>
 
         @if(session('error'))
-            <div class="error-message" style="display: block;"> 
+            <div class="error-message"> 
                 {{ session('error') }}
             </div>
         @endif
 
         <form action="{{ route('login.post') }}" method="post" id="loginForm">
             @csrf
-            <input type="text" name="username" id="username" placeholder="Your username or email..." required>
+            <input type="text" name="username" id="username" placeholder="Your username..." required>
             <input type="password" name="password" id="password" placeholder="Your password..." required>
             <button type="submit">Login</button>
         </form>
@@ -37,12 +41,6 @@
         <div class="down-container">
             <p>Don't have an account? <a href="{{ route('Mainfolder.signup') }}">Sign Up</a></p>
         </div>
-
-        <div class="social-login">
-            <h2>Or sign up with</h2>
-            <a href="{{ route('auth.google') }}" class="google-button">Google</a>
-        </div>
-
     </div>
 
     <!-- Modal -->
@@ -86,6 +84,19 @@
                 modal.style.display = "none";
             }
         }
+
+        // Automatically hide the error message after 5 seconds
+        window.onload = function() {
+            const errorMessage = document.querySelector('.error-message');
+            if (errorMessage) {
+                setTimeout(() => {
+                    errorMessage.classList.add('hidden');
+                    setTimeout(() => {
+                        errorMessage.remove(); // Remove from DOM after fading out
+                    }, 500); // Match this duration with the transition duration in CSS
+                }, 5000); // Time in milliseconds before fading out
+            }
+        };
     </script>
 </body>
 </html>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Appointify</title>
+    <link rel="shortcut icon" href="{{ asset('/images/logo_2.0.ico')}}" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -11,7 +12,7 @@
 </head>
 <body>
     <div class="top-section">
-        <img src="{{ asset('/images/logo.png')}}" alt="for edit muna ">
+        <img src="{{ asset('/images/logo_2.0.png')}}" alt="for edit muna ">
         <div class="nav-links">
             <a href="#section-1">Home</a>
             <a href="#section-2">Features</a>
@@ -37,7 +38,9 @@
         <img src="{{ asset('/images/pic1.png')}}" alt="Image here">
     </div>
 
-    <button><a href="{{route('Mainfolder.login')}}">GET STARTED NOW</a></button>
+    <div class="button">
+        <a href="{{route('Mainfolder.login')}}">GET STARTED NOW</a>
+    </div>
 
     <section id="section-2">
         <div class="middle-section">
@@ -54,11 +57,6 @@
                             <img src="{{asset('images/pic3.png')}}" alt="">
                             <h1>automated reminders</h1>
                             <p>Never miss an appointment with automated notifications</p>
-                        </div>
-                        <div class="card">
-                            <img src="{{asset('images/pic5.png')}}" alt="">
-                            <h1>calendar integration</h1>
-                            <p>Seamless sync with Google, Outlook, and other calendars.</p>
                         </div>
                         <div class="card">
                             <img src="{{asset('images/pic4.png')}}" alt="">

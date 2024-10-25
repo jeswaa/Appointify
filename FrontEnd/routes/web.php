@@ -43,15 +43,21 @@ Route::post('/appointify/login/loginAdmin', [AdminController::class, 'adminLogin
 Route::get('/appointify/adminDashboard',[AdminController::class, 'adminView'])->name('Mainfolder.adminDashboard');
 Route::get('/appointify/adminDashboard/Appointments',[AdminController::class, 'adminAppointments'])->name('Mainfolder.adminAppointment');
 Route::get('/appointify/logout', [MainController::class, 'logout'])->name('logout');
-
+Route::get('/admin/dashboard', [AdminController::class, 'viewAdminData'])->name('Mainfolder.adminDashboard');
 
 Route::post('/send-reminder/{bookingId}', [BookingController::class, 'sendReminderToUser'])->name('send.reminder');
+Route::get('/appointments', [BookingController::class, 'getUserAppointments'])->name('appointments');
+Route::post('/reminders/delete/{id}', [BookingController::class, 'deleteReminder'])->name('reminders.delete');
+Route::get('/notifications', [BookingController::class, 'showNotifications'])->name('notifications.show');
+
 
 Route::get('/appointify/userhomepage/UserProfile', [MainController::class, 'profile'])->name('Mainfolder.profile');
 Route::get('/appointify/profileedit',[MainController::class,  'profileEdit'])->name('Mainfolder.editprofile_user');
 Route::get('/appointify/userhomepage/UserProfile/about',[MainController::class,  'about'])->name('Mainfolder.about');
 Route::get('/appointify/userhomepage/UserProfile/appointment',[MainController::class,  'appointment'])->name('Mainfolder.appointment');
-
+Route::get('/user-homepage', [MainController::class, 'getFeedbacks'])->name('Mainfolder.userHomepage');
+Route::post('/feedback/add', [MainController::class, 'addFeedback'])->name('addFeedback');
+Route::delete('/feedback/delete/{id}', [MainController::class, 'deleteFeedback'])->name('deleteFeedback');
 
 
 Route::get('/appointify/userhomepage',[MainController::class, 'userHomepage'])->name('Mainfolder.userHomepage');
